@@ -1,0 +1,14 @@
+{
+  "item.registry_biginteger_cell.registry_biginteger_test_cell": "Registry BigInteger Cell",
+  "item.registry_biginteger_cell.configured_biginteger_test_cell": "Configured BigInteger Cell",
+  "message.registry_biginteger_cell.ready": "Ready: %s items, %s fluids, %s chemicals at %s each",
+  "message.registry_biginteger_cell.refreshed": "Rebuilt: %s items, %s fluids, %s chemicals at %s each",
+  "message.registry_biginteger_cell.configured_ready": "Ready: %s configured items and %s configured fluids at %s each",
+  "message.registry_biginteger_cell.configured_refreshed": "Rebuilt: %s configured items and %s configured fluids at %s each",
+  "tooltip.registry_biginteger_cell.amount": "Exact amount per registered key: %s",
+  "tooltip.registry_biginteger_cell.contents": "Keys: %s items / %s fluids / %s chemicals",
+  "tooltip.registry_biginteger_cell.configured_amount": "Exact amount per configured key: %s",
+  "tooltip.registry_biginteger_cell.configured_contents": "Configured keys: %s items / %s fluids",
+  "tooltip.registry_biginteger_cell.uninitialized": "Initializes automatically on the server",
+  "tooltip.registry_biginteger_cell.refresh": "Sneak-right-click to rebuild from the current registries"
+}

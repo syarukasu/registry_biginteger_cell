@@ -1,0 +1,64 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "registry_biginteger_cell"
+version = "${file.jarVersion}"
+displayName = "Registry BigInteger Cell"
+authors = "syarukasu"
+displayTest = "MATCH_VERSION"
+description = '''
+Adds two operator-only AE2 BigInteger test cells. One reads every registered
+item, fluid, and Mekanism chemical. The other reads configured item/fluid IDs.
+Every selected key is stored at the exact amount 10^64.
+'''
+
+[[dependencies.registry_biginteger_cell]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.4.18,48)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.registry_biginteger_cell]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.20.2)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.registry_biginteger_cell]]
+modId = "ae2"
+mandatory = true
+versionRange = "[15.4.10,15.5.0)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.registry_biginteger_cell]]
+modId = "extendedae_plus"
+mandatory = true
+versionRange = "[1.5.5,1.6.0)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.registry_biginteger_cell]]
+modId = "mekanism"
+mandatory = true
+versionRange = "[10.4.16,10.5.0)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.registry_biginteger_cell]]
+modId = "appmek"
+mandatory = true
+versionRange = "[1.4.3,1.5.0)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.registry_biginteger_cell]]
+modId = "ae2_crafting_optimizer"
+mandatory = true
+versionRange = "[1.5.2,1.6.0)"
+ordering = "AFTER"
+side = "BOTH"

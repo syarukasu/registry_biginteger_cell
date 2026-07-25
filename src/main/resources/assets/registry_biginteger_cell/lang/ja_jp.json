@@ -1,0 +1,14 @@
+{
+  "item.registry_biginteger_cell.registry_biginteger_test_cell": "全レジストリBigIntegerセル",
+  "item.registry_biginteger_cell.configured_biginteger_test_cell": "設定対象BigIntegerセル",
+  "message.registry_biginteger_cell.ready": "準備完了: アイテム%s種・液体%s種・化学物質%s種、各%s",
+  "message.registry_biginteger_cell.refreshed": "再構築完了: アイテム%s種・液体%s種・化学物質%s種、各%s",
+  "message.registry_biginteger_cell.configured_ready": "準備完了: 設定アイテム%s種・設定液体%s種、各%s",
+  "message.registry_biginteger_cell.configured_refreshed": "再構築完了: 設定アイテム%s種・設定液体%s種、各%s",
+  "tooltip.registry_biginteger_cell.amount": "各登録キーの正確な数量: %s",
+  "tooltip.registry_biginteger_cell.contents": "登録数: アイテム%s種 / 液体%s種 / 化学物質%s種",
+  "tooltip.registry_biginteger_cell.configured_amount": "各設定キーの正確な数量: %s",
+  "tooltip.registry_biginteger_cell.configured_contents": "設定登録数: アイテム%s種 / 液体%s種",
+  "tooltip.registry_biginteger_cell.uninitialized": "サーバー側で自動初期化されます",
+  "tooltip.registry_biginteger_cell.refresh": "Shift+右クリックで現在のレジストリから再構築"
+}

@@ -1,0 +1,67 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.+'
+}
+
+group = 'com.syaru.registrybigintegercell'
+version = '1.1.0'
+
+base {
+    archivesName = 'registry-biginteger-cell'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def localMods = file(
+        providers.gradleProperty('localModsDir')
+                .orElse(providers.environmentVariable('LOCAL_MODS_DIR'))
+                .orElse('../../mods')
+                .get())
+
+def localMod = { String fileName ->
+    def dependency = new File(localMods, fileName)
+    if (!dependency.isFile()) {
+        throw new GradleException(
+                "Missing local mod dependency: ${dependency}. "
+                        + "Set -PlocalModsDir=<path> or LOCAL_MODS_DIR.")
+    }
+    dependency
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.18'
+
+    compileOnly fg.deobf(files(
+            localMod('appliedenergistics2-forge-15.4.10.jar'),
+            localMod('extendedae_plus-1.5.5.jar'),
+            localMod('Applied-Mekanistics-1.4.3.jar'),
+            localMod('Mekanism-1.20.1-10.4.16.80.jar')
+    ))
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') {
+        expand 'file': ['jarVersion': project.version]
+    }
+}
+
+jar {
+    from('LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE_registry_biginteger_cell' }
+    }
+}
