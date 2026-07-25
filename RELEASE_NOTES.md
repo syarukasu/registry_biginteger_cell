@@ -1,3 +1,18 @@
+# Registry BigInteger Cell 1.1.1
+
+## English
+
+- Fixed a dedicated-server crash when AE2 queried this mod's cell handler for
+  storage cells owned by other addons.
+- Unsupported cells are now passed to the next registered AE2 cell handler
+  without casting or modifying their contents.
+
+## 日本語
+
+- AE2が他アドオンのセルを照会した際に発生していたDedicated Serverの
+  クラッシュを修正。
+- 対象外セルをキャストせず、内容も変更せずに次のAE2セルハンドラへ渡すよう修正。
+
 # Registry BigInteger Cell 1.1.0
 
 ## English
