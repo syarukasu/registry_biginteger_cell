@@ -6,12 +6,16 @@
   storage cells owned by other addons.
 - Unsupported cells are now passed to the next registered AE2 cell handler
   without casting or modifying their contents.
+- Huge per-key and total tooltip values now use compact scientific notation.
+- Added a dedicated creative tab containing both operator test cells.
 
 ## 日本語
 
 - AE2が他アドオンのセルを照会した際に発生していたDedicated Serverの
   クラッシュを修正。
 - 対象外セルをキャストせず、内容も変更せずに次のAE2セルハンドラへ渡すよう修正。
+- 各キー量と合計量を、折り返さない短い指数表記へ変更。
+- 2種類の運用者向けテストセルを収録する専用クリエイティブタブを追加。
 
 # Registry BigInteger Cell 1.1.0
 

@@ -14,6 +14,7 @@ Operator-only AE2 integration cells for Minecraft 1.20.1 Forge.
 Every selected AE key is initialized with the exact amount `10^64`.
 The cells use ExtendedAE Plus BigInteger storage, while AE2-compatible views
 remain bounded by the integrations installed in the pack.
+Huge per-key and total values use compact scientific notation in tooltips.
 
 The configured cell defaults to `minecraft:cobblestone`.
 
@@ -25,6 +26,8 @@ example, the syarukasutime integration server uses:
 
 Both cells have no survival recipe. Use `/give` for integration testing.
 Sneak-right-click a cell to rebuild it from the current registries or config.
+Both cells are also listed in the dedicated `Registry BigInteger Cell`
+creative tab.
 
 Legacy item IDs from `registry_long_test_cell` are remapped automatically.
 
