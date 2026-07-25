@@ -26,9 +26,19 @@ public final class RegistryBigIntegerCellHandler implements ICellHandler {
     public StorageCell getCellInventory(
             ItemStack stack,
             ISaveProvider saveProvider) {
+        // AE2は全セルハンドラへ順番に問い合わせるため、このMOD以外のセルは次のハンドラへ渡す。
+        if (!isCell(stack)) {
+            return null;
+        }
+
+        // 登録クラスの変更時にも不正キャストでワールドを停止させないため、実型を再確認する。
+        if (!(stack.getItem() instanceof InfinityBigIntegerCellItem cell)) {
+            return null;
+        }
+
         initializeOnServer(stack);
         return new LimitedBigIntegerCellInventory(
-                (InfinityBigIntegerCellItem) stack.getItem(),
+                cell,
                 stack,
                 saveProvider);
     }

@@ -1,4 +1,5 @@
 {
+  "itemGroup.registry_biginteger_cell": "Registry BigInteger Cell",
   "item.registry_biginteger_cell.registry_biginteger_test_cell": "Registry BigInteger Cell",
   "item.registry_biginteger_cell.configured_biginteger_test_cell": "Configured BigInteger Cell",
   "message.registry_biginteger_cell.ready": "Ready: %s items, %s fluids, %s chemicals at %s each",

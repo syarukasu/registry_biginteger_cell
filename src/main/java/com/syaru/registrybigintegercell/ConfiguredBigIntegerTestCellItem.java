@@ -67,7 +67,8 @@ public final class ConfiguredBigIntegerTestCellItem
                                     : "message.registry_biginteger_cell.configured_ready",
                             result.itemKeys(),
                             result.fluidKeys(),
-                            ConfiguredTestCellContents.AMOUNT.toString()),
+                            BigIntegerDisplayFormatter.format(
+                                    ConfiguredTestCellContents.AMOUNT)),
                     true);
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
@@ -79,10 +80,16 @@ public final class ConfiguredBigIntegerTestCellItem
             Level level,
             List<Component> tooltip,
             TooltipFlag flag) {
+        int parentStartIndex = tooltip.size();
         super.appendHoverText(stack, level, tooltip, flag);
+        BigIntegerTooltipFormatter.replaceParentTotal(
+                stack,
+                tooltip,
+                parentStartIndex);
         tooltip.add(Component.translatable(
                         "tooltip.registry_biginteger_cell.configured_amount",
-                        ConfiguredTestCellContents.AMOUNT.toString())
+                        BigIntegerDisplayFormatter.format(
+                                ConfiguredTestCellContents.AMOUNT))
                 .withStyle(ChatFormatting.LIGHT_PURPLE));
         ConfiguredTestCellContents.readSummary(stack).ifPresentOrElse(
                 summary -> tooltip.add(Component.translatable(

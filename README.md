@@ -14,6 +14,9 @@ Operator-only AE2 integration cells for Minecraft 1.20.1 Forge.
 Every selected AE key is initialized with the exact amount `10^64`.
 The cells use ExtendedAE Plus BigInteger storage, while AE2-compatible views
 remain bounded by the integrations installed in the pack.
+Huge per-key and total values use compact scientific notation in tooltips.
+Both cells are listed in the dedicated `Registry BigInteger Cell`
+creative tab.
 
 The configured cell defaults to `minecraft:cobblestone`.
 

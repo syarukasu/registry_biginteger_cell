@@ -66,7 +66,8 @@ public final class RegistryBigIntegerTestCellItem extends InfinityBigIntegerCell
                             result.itemKeys(),
                             result.fluidKeys(),
                             result.chemicalKeys(),
-                            RegistryTestCellContents.AMOUNT.toString()),
+                            BigIntegerDisplayFormatter.format(
+                                    RegistryTestCellContents.AMOUNT)),
                     true);
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
@@ -78,10 +79,16 @@ public final class RegistryBigIntegerTestCellItem extends InfinityBigIntegerCell
             Level level,
             List<Component> tooltip,
             TooltipFlag flag) {
+        int parentStartIndex = tooltip.size();
         super.appendHoverText(stack, level, tooltip, flag);
+        BigIntegerTooltipFormatter.replaceParentTotal(
+                stack,
+                tooltip,
+                parentStartIndex);
         tooltip.add(Component.translatable(
                         "tooltip.registry_biginteger_cell.amount",
-                        RegistryTestCellContents.AMOUNT.toString())
+                        BigIntegerDisplayFormatter.format(
+                                RegistryTestCellContents.AMOUNT))
                 .withStyle(ChatFormatting.LIGHT_PURPLE));
 
         RegistryTestCellContents.readSummary(stack).ifPresentOrElse(

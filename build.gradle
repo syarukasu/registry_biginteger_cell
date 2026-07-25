@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.syaru.registrybigintegercell'
-version = '1.1.0'
+version = '1.1.1'
 
 base {
     archivesName = 'registry-biginteger-cell'
@@ -46,10 +46,17 @@ dependencies {
             localMod('Applied-Mekanistics-1.4.3.jar'),
             localMod('Mekanism-1.20.1-10.4.16.80.jar')
     ))
+
+    testImplementation platform('org.junit:junit-bom:5.10.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 processResources {

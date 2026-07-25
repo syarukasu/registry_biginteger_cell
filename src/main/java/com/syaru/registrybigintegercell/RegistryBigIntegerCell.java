@@ -2,10 +2,10 @@ package com.syaru.registrybigintegercell;
 
 import appeng.api.storage.StorageCells;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +23,8 @@ public final class RegistryBigIntegerCell {
 
     private static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+    private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
     public static final RegistryObject<Item> REGISTRY_TEST_CELL = ITEMS.register(
             "registry_biginteger_test_cell",
@@ -32,6 +34,20 @@ public final class RegistryBigIntegerCell {
             "configured_biginteger_test_cell",
             ConfiguredBigIntegerTestCellItem::new);
 
+    public static final RegistryObject<CreativeModeTab> MAIN_TAB =
+            CREATIVE_TABS.register(
+                    "main",
+                    () -> CreativeModeTab.builder()
+                            .title(Component.translatable(
+                                    "itemGroup.registry_biginteger_cell"))
+                            .icon(() -> REGISTRY_TEST_CELL.get().getDefaultInstance())
+                            .displayItems((parameters, output) -> {
+                                // テスト用途の二種類だけを固定順で並べ、他MODのタブへ重複登録しない。
+                                output.accept(REGISTRY_TEST_CELL.get());
+                                output.accept(CONFIGURED_TEST_CELL.get());
+                            })
+                            .build());
+
     public RegistryBigIntegerCell() {
         StorageCells.addCellHandler(RegistryBigIntegerCellHandler.INSTANCE);
         ModLoadingContext.get().registerConfig(
@@ -39,15 +55,8 @@ public final class RegistryBigIntegerCell {
                 RegistryBigIntegerCellConfig.SPEC);
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(modBus);
-        modBus.addListener(this::addCreativeTabContents);
+        CREATIVE_TABS.register(modBus);
         MinecraftForge.EVENT_BUS.addListener(this::remapLegacyItems);
-    }
-
-    private void addCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(REGISTRY_TEST_CELL);
-            event.accept(CONFIGURED_TEST_CELL);
-        }
     }
 
     private void remapLegacyItems(MissingMappingsEvent event) {

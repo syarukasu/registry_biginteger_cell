@@ -1,4 +1,5 @@
 {
+  "itemGroup.registry_biginteger_cell": "Registry BigInteger Cell",
   "item.registry_biginteger_cell.registry_biginteger_test_cell": "全レジストリBigIntegerセル",
   "item.registry_biginteger_cell.configured_biginteger_test_cell": "設定対象BigIntegerセル",
   "message.registry_biginteger_cell.ready": "準備完了: アイテム%s種・液体%s種・化学物質%s種、各%s",
