@@ -15,19 +15,10 @@ Every selected AE key is initialized with the exact amount `10^64`.
 The cells use ExtendedAE Plus BigInteger storage, while AE2-compatible views
 remain bounded by the integrations installed in the pack.
 Huge per-key and total values use compact scientific notation in tooltips.
+Both cells are listed in the dedicated `Registry BigInteger Cell`
+creative tab.
 
 The configured cell defaults to `minecraft:cobblestone`.
-
-Pack or server operators can replace that default in the common config. For
-example, the syarukasutime integration server uses:
-
-- `kubejs:aco_crafting_island_seed_a`
-- `kubejs:aco_crafting_island_seed_b`
-
-Both cells have no survival recipe. Use `/give` for integration testing.
-Sneak-right-click a cell to rebuild it from the current registries or config.
-Both cells are also listed in the dedicated `Registry BigInteger Cell`
-creative tab.
 
 Legacy item IDs from `registry_long_test_cell` are remapped automatically.
 
