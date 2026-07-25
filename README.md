@@ -17,15 +17,6 @@ remain bounded by the integrations installed in the pack.
 
 The configured cell defaults to `minecraft:cobblestone`.
 
-Pack or server operators can replace that default in the common config. For
-example, the syarukasutime integration server uses:
-
-- `kubejs:aco_crafting_island_seed_a`
-- `kubejs:aco_crafting_island_seed_b`
-
-Both cells have no survival recipe. Use `/give` for integration testing.
-Sneak-right-click a cell to rebuild it from the current registries or config.
-
 Legacy item IDs from `registry_long_test_cell` are remapped automatically.
 
 ## Build
