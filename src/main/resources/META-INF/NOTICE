@@ -1,0 +1,17 @@
+Registry BigInteger Cell
+Copyright (c) 2026 syarukasu
+
+This JAR contains Registry BigInteger Cell original code and assets under the
+MIT License. It uses ExtendedAE Plus (GaLicn/ExtendedAE_Plus) as a separately
+installed runtime dependency.
+
+RegistryBigIntegerTestCellItem and ConfiguredBigIntegerTestCellItem subclass
+ExtendedAE Plus' InfinityBigIntegerCellItem and use its BigInteger storage API.
+The cell item models reference the upstream parent model
+extendedae_plus:item/infinity_biginteger_cell. No ExtendedAE Plus Java code,
+source, model JSON, or texture PNG is bundled in this JAR.
+
+ExtendedAE Plus is distributed under the GNU Lesser General Public License
+version 3. A verbatim license copy is available at
+META-INF/licenses/ExtendedAE-Plus-LGPL-3.0.txt. Source:
+https://github.com/GaLicn/ExtendedAE_Plus
