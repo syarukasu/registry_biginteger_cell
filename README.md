@@ -43,8 +43,8 @@ The release JAR is written to `build/libs/`.
 Registry BigInteger Cell's original code and assets are available under the MIT
 License. See `LICENSE`.
 
-The mod requires ExtendedAE Plus `1.5.5` through, but not including, `1.6.0`
-at runtime. `RegistryBigIntegerTestCellItem` and
+The mod requires ExtendedAE Plus `1.5.5` at runtime.
+`RegistryBigIntegerTestCellItem` and
 `ConfiguredBigIntegerTestCellItem` subclass its `InfinityBigIntegerCellItem`
 and use its BigInteger storage API. ExtendedAE Plus is licensed under
 LGPL-3.0-only. The cell item models resolve their parent model and texture from

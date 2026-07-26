@@ -4,7 +4,7 @@
 
 - Project: [ExtendedAE Plus](https://www.curseforge.com/minecraft/mc-mods/extendedae-plus)
 - Source: [GaLicn/ExtendedAE_Plus](https://github.com/GaLicn/ExtendedAE_Plus)
-- Runtime version range: `1.5.5` through, but not including, `1.6.0`
+- Required runtime version: `1.5.5`
 - License: GNU Lesser General Public License v3.0 (`LGPL-3.0-only`)
 
 Registry BigInteger Cell is a separately distributed runtime-dependent
