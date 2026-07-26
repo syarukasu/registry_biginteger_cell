@@ -9,14 +9,17 @@ import com.extendedae_plus.api.storage.InfinityBigIntegerCellInventory;
 import com.extendedae_plus.items.InfinityBigIntegerCellItem;
 import com.extendedae_plus.util.storage.InfinityDataStorage;
 import com.extendedae_plus.util.storage.InfinityStorageManager;
+import com.syaru.ae2craftingoptimizer.api.vector.ExactVectorStoragePolicy;
 import java.math.BigInteger;
+import java.util.Objects;
 import java.util.UUID;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
 /** ExtendedAE Plus inventory with a strict per-key stock ceiling. */
 public final class LimitedBigIntegerCellInventory
-        extends InfinityBigIntegerCellInventory {
+        extends InfinityBigIntegerCellInventory
+        implements ExactVectorStoragePolicy {
     private static final String UUID_TAG = "infinity_cell_uuid";
     private final ItemStack stack;
 
@@ -49,6 +52,25 @@ public final class LimitedBigIntegerCellInventory
                 ? remaining.longValueExact()
                 : amount;
         return super.insert(key, accepted, mode, source);
+    }
+
+    @Override
+    public BigInteger acoMaximumExactInsert(
+            AEKey key,
+            BigInteger currentAmount) {
+        BigInteger current = Objects.requireNonNull(
+                currentAmount, "currentAmount");
+        // Config対象外キー、負数、上限到達済みキーへACOの直接挿入を許可しない。
+        if (!allows(Objects.requireNonNull(key, "key"))
+                || current.signum() < 0
+                || current.compareTo(
+                                RegistryBigIntegerCellLimits
+                                        .MAXIMUM_PER_KEY)
+                        >= 0) {
+            return BigInteger.ZERO;
+        }
+        return RegistryBigIntegerCellLimits.MAXIMUM_PER_KEY
+                .subtract(current);
     }
 
     private boolean allows(AEKey key) {

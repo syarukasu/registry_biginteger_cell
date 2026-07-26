@@ -37,6 +37,16 @@ def localMod = { String fileName ->
     dependency
 }
 
+def localAco = file(
+        providers.gradleProperty('acoJar')
+                .orElse('../ae2-crafting-optimizer/build/libs/ae2-crafting-optimizer-1.5.4.jar')
+                .get())
+if (!localAco.isFile()) {
+    throw new GradleException(
+            "Missing ACO API dependency: ${localAco}. "
+                    + "Build ACO first or set -PacoJar=<path>.")
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.18'
 
@@ -46,6 +56,7 @@ dependencies {
             localMod('Applied-Mekanistics-1.4.3.jar'),
             localMod('Mekanism-1.20.1-10.4.16.80.jar')
     ))
+    compileOnly files(localAco)
 
     testImplementation platform('org.junit:junit-bom:5.10.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -67,6 +78,8 @@ processResources {
 }
 
 jar {
+    // 配布JAR内のMinecraft参照を、本番環境で使われる難読化名へ必ず変換する。
+    finalizedBy 'reobfJar'
     from('LICENSE') {
         into 'META-INF'
         rename { 'LICENSE_registry_biginteger_cell' }
