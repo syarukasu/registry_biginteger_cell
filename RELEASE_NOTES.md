@@ -1,3 +1,23 @@
+# Registry BigInteger Cell 1.1.2
+
+## English
+
+- Exposes the cell's exact per-key BigInteger limit to ACO's Exact Storage
+  integration.
+- Preserves one shared total across multiple AE2 inventory wrappers instead
+  of allowing every wrapper to advertise an independent full capacity.
+- Requires AE2 Crafting Optimizer `1.5.4` or newer in the `1.5.x` series.
+- Keeps the stored amounts, registry coverage, cell item IDs, and tooltip
+  formatting unchanged.
+
+## 日本語
+
+- セルの正確なキー単位BigInteger上限をACOのExact Storage連携へ公開。
+- 複数のAE2 Inventory wrapperが同じセルを参照しても、wrapperごとに
+  独立した満容量を見せず、一つの共有総量として維持。
+- AE2 Crafting Optimizer `1.5.4`以上の`1.5.x`を必須化。
+- 保存量、収録Registry、セルのアイテムID、ツールチップ表示は変更なし。
+
 # Registry BigInteger Cell 1.1.1
 
 ## English
