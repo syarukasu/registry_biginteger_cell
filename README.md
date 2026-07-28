@@ -18,6 +18,11 @@ Huge per-key and total values use compact scientific notation in tooltips.
 Both cells are listed in the dedicated `Registry BigInteger Cell`
 creative tab.
 
+AE2 Crafting Optimizer `1.5.4` or newer in the `1.5.x` series is required.
+The cell exposes its exact per-key and shared-total BigInteger limits to ACO,
+allowing ACO to keep exact capacity accounting across multiple AE2 inventory
+wrappers.
+
 The configured cell defaults to `minecraft:cobblestone`.
 
 Legacy item IDs from `registry_long_test_cell` are remapped automatically.
