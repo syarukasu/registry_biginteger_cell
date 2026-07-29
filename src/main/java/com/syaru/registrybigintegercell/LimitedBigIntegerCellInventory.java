@@ -43,8 +43,8 @@ public final class LimitedBigIntegerCellInventory
 
         BigInteger current = currentAmount(key);
         BigInteger remaining =
-                RegistryBigIntegerCellLimits.MAXIMUM_PER_KEY.subtract(current);
-        if (remaining.signum() <= 0) {
+                RegistryBigIntegerCellLimits.remainingCapacity(current);
+        if (remaining.signum() == 0) {
             return 0L;
         }
 
@@ -62,15 +62,10 @@ public final class LimitedBigIntegerCellInventory
                 currentAmount, "currentAmount");
         // Config対象外キー、負数、上限到達済みキーへACOの直接挿入を許可しない。
         if (!allows(Objects.requireNonNull(key, "key"))
-                || current.signum() < 0
-                || current.compareTo(
-                                RegistryBigIntegerCellLimits
-                                        .MAXIMUM_PER_KEY)
-                        >= 0) {
+                || current.signum() < 0) {
             return BigInteger.ZERO;
         }
-        return RegistryBigIntegerCellLimits.MAXIMUM_PER_KEY
-                .subtract(current);
+        return RegistryBigIntegerCellLimits.remainingCapacity(current);
     }
 
     private boolean allows(AEKey key) {

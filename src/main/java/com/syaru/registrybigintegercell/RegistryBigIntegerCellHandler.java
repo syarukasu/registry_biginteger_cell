@@ -32,7 +32,11 @@ public final class RegistryBigIntegerCellHandler implements ICellHandler {
         }
 
         // 登録クラスの変更時にも不正キャストでワールドを停止させないため、実型を再確認する。
-        if (!(stack.getItem() instanceof InfinityBigIntegerCellItem cell)) {
+        InfinityBigIntegerCellItem cell =
+                CellHandlerTypeGuard.castOrNull(
+                        stack.getItem(),
+                        InfinityBigIntegerCellItem.class);
+        if (cell == null) {
             return null;
         }
 
