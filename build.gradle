@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.syaru.registrybigintegercell'
-version = '1.1.2'
+version = '1.1.3'
 
 base {
     archivesName = 'registry-biginteger-cell'
@@ -39,7 +39,7 @@ def localMod = { String fileName ->
 
 def localAco = file(
         providers.gradleProperty('acoJar')
-                .orElse('../ae2-crafting-optimizer/build/libs/ae2-crafting-optimizer-1.5.4.jar')
+                .orElse('../ae2-crafting-optimizer/build/libs/ae2-crafting-optimizer-1.5.5.jar')
                 .get())
 if (!localAco.isFile()) {
     throw new GradleException(
