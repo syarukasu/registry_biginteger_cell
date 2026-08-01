@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [1.1.4] - 2026-08-02
+
+### Fixed
+
+- Replaced the invalid ExtendedAE Plus dependency range
+  `[1.5.5,1.5.5]` with the valid exact-version range `[1.5.5]`.
+- Restored Forge 47.4.20 mod discovery; gameplay and cell storage behavior
+  are unchanged.
+
 ## [1.1.3] - 2026-07-29
 
 ### Fixed
