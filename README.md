@@ -19,7 +19,7 @@ Both cells are listed in the dedicated `Registry BigInteger Cell`
 creative tab.
 
 AE2 Crafting Optimizer `1.5.4` or newer in the `1.5.x` series is required.
-Version `1.1.3` is built and tested against ACO `1.5.5`.
+Version `1.1.4` is built and tested against ACO `1.5.5`.
 The cell exposes its exact per-key and shared-total BigInteger limits to ACO,
 allowing ACO to keep exact capacity accounting across multiple AE2 inventory
 wrappers.

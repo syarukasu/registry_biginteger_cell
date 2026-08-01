@@ -1,3 +1,21 @@
+# Registry BigInteger Cell 1.1.4
+
+## English
+
+- Fixes a Forge 47.4.20 startup failure caused by an invalid Maven dependency
+  range for ExtendedAE Plus.
+- Requires exactly ExtendedAE Plus `1.5.5` using the valid Forge range
+  `[1.5.5]`.
+- Does not change cell contents, capacity, registry coverage, or gameplay.
+
+## 日本語
+
+- ExtendedAE Plusの不正なMaven依存範囲によってForge 47.4.20が
+  Mod検出中に停止する問題を修正。
+- 正しいForge範囲`[1.5.5]`を使用し、ExtendedAE Plus `1.5.5`を
+  完全一致で要求。
+- セル内容、容量、Registry収録範囲、ゲーム内仕様は変更なし。
+
 # Registry BigInteger Cell 1.1.2
 
 ## English
