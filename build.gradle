@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.syaru.registrybigintegercell'
-version = '1.1.4'
+version = '1.1.5'
 
 base {
     archivesName = 'registry-biginteger-cell'
@@ -37,6 +37,17 @@ def localMod = { String fileName ->
     dependency
 }
 
+def ae2Variant = (findProperty('ae2Variant') ?: 'upstream').toString().trim().toLowerCase()
+def ae2Versions = [
+        upstream: '15.4.10',
+        uelm: '15.5.0-uelm'
+]
+if (!ae2Versions.containsKey(ae2Variant)) {
+    throw new GradleException("Unknown ae2Variant '${ae2Variant}'. Use 'upstream' or 'uelm'.")
+}
+def selectedAe2Version = ae2Versions[ae2Variant]
+def localAe2 = localMod("appliedenergistics2-forge-${selectedAe2Version}.jar")
+
 def localAco = file(
         providers.gradleProperty('acoJar')
                 .orElse('../ae2-crafting-optimizer/build/libs/ae2-crafting-optimizer-1.5.5.jar')
@@ -51,7 +62,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.18'
 
     compileOnly fg.deobf(files(
-            localMod('appliedenergistics2-forge-15.4.10.jar'),
+            localAe2,
             localMod('extendedae_plus-1.5.5.jar'),
             localMod('Applied-Mekanistics-1.4.3.jar'),
             localMod('Mekanism-1.20.1-10.4.16.80.jar')
@@ -60,6 +71,30 @@ dependencies {
 
     testImplementation platform('org.junit:junit-bom:5.10.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+tasks.register('verifyAe2Profile') {
+    doLast {
+        logger.lifecycle("Registry BigInteger Cell AE2 profile: ${ae2Variant} (${selectedAe2Version})")
+        def metadataFiles = zipTree(localAe2).matching {
+            include 'META-INF/mods.toml'
+        }.files
+        if (metadataFiles.size() != 1) {
+            throw new GradleException("Expected one META-INF/mods.toml in ${localAe2.name}")
+        }
+
+        def metadata = metadataFiles.first().getText('UTF-8')
+        if (!metadata.contains('modId="ae2"')) {
+            throw new GradleException("${localAe2.name} does not declare mod id ae2")
+        }
+        if (!metadata.contains(selectedAe2Version)) {
+            throw new GradleException("${localAe2.name} does not declare AE2 version ${selectedAe2Version}")
+        }
+    }
+}
+
+tasks.named('compileJava').configure {
+    dependsOn tasks.named('verifyAe2Profile')
 }
 
 tasks.withType(JavaCompile).configureEach {

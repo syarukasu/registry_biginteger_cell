@@ -19,7 +19,8 @@ Both cells are listed in the dedicated `Registry BigInteger Cell`
 creative tab.
 
 AE2 Crafting Optimizer `1.5.4` or newer in the `1.5.x` series is required.
-Version `1.1.4` is built and tested against ACO `1.5.5`.
+Version `1.1.5` is built against ACO `1.5.9` and is verified with both
+upstream AE2 `15.4.10` and AE2-UELM `15.5.0-uelm`.
 The cell exposes its exact per-key and shared-total BigInteger limits to ACO,
 allowing ACO to keep exact capacity accounting across multiple AE2 inventory
 wrappers.
@@ -32,6 +33,9 @@ Legacy item IDs from `registry_long_test_cell` are remapped automatically.
 
 Java 17 is required. The build expects the matching AE2, ExtendedAE Plus,
 Applied Mekanistics, and Mekanism JARs in a local mods directory.
+
+Select the AE2 implementation with `-Pae2Variant=upstream` or
+`-Pae2Variant=uelm`. Both profiles build the same distributable mod.
 
 PowerShell:
 
