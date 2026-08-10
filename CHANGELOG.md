@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [1.1.5] - 2026-08-10
+
+### Changed
+
+- Expanded the accepted AE2 range to 15.4.10 through 15.x.
+- Added build verification for upstream AE2 15.4.10 and AE2-UELM
+  15.5.0-uelm.
+- Kept all BigInteger storage and capacity accounting behavior unchanged.
+
 ## [1.1.4] - 2026-08-02
 
 ### Fixed
